@@ -10,6 +10,8 @@ custom-setup:
     - Cabal
 extra-source-files:
   - README.md
+extra-libraries:
+  - hpdfs
 
 dependencies:
   - base >= 4.7 && < 5
