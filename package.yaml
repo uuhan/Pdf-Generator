@@ -3,6 +3,11 @@ version:             0.1.0.0
 license:             BSD3
 author:              uuhan
 category:            PDF
+custom-setup:
+  dependencies:
+    - base
+    - directory
+    - Cabal
 extra-source-files:
   - README.md
 
