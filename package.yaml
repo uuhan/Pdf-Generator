@@ -13,9 +13,15 @@ extra-source-files:
   - README.md
 extra-libraries:
   - hpdfs
+  - png
+  - z
 
 include-dirs:
   - libharu/include
+  - include
+
+c-sources:
+  - cbits/utils.c
 
 when:
   - condition: os(darwin)
