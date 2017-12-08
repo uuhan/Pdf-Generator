@@ -1,27 +1,42 @@
 import           Control.Monad
+import           Distribution.PackageDescription    (PackageDescription (..))
 import           Distribution.Simple
+import           Distribution.Simple.LocalBuildInfo (InstallDirs (..),
+                                                     LocalBuildInfo (..),
+                                                     absoluteInstallDirs)
 import           Distribution.Simple.Setup
-import           Distribution.Simple.Utils (rawSystemExit)
+import           Distribution.Simple.Utils          (rawSystemExit)
+import           Distribution.Verbosity             (Verbosity)
 import           System.Directory
 
 main :: IO ()
 main = defaultMainWithHooks simpleUserHooks
-  { preBuild = \a b -> makeLib a b >> preBuild simpleUserHooks a b }
+  { preConf = \a b -> makeLib a b >> preConf simpleUserHooks a b
+  , copyHook = copyLibharu
+  }
 
-makeLib :: Args -> BuildFlags -> IO ()
+makeLib :: Args -> ConfigFlags -> IO ()
 makeLib _ flags = do
-  runInDir flags "." [["bash", "dep.sh"]]
-  runInDir flags "libharu"
+  let v = fromFlag $ configVerbosity flags
+  runInDir v "." [["bash", "dep.sh"]]
+  runInDir v "libharu"
     [ ["cmake", "-DLIBHPDF_SHARED=OFF", "."]
     , ["make"]
     ]
 
-runInDir :: BuildFlags -> FilePath -> [[String]] -> IO ()
-runInDir flags path cmds = do
+runInDir :: Verbosity -> FilePath -> [[String]] -> IO ()
+runInDir v path cmds = do
   old <- getCurrentDirectory
   setCurrentDirectory path
-  forM_ cmds $ \cmd -> run flags cmd
+  forM_ cmds $ \cmd -> run cmd
   setCurrentDirectory old
   where
-    run flags cmd = do
-      rawSystemExit (fromFlag $ buildVerbosity flags) "env" cmd
+    run cmd = do
+      rawSystemExit v "env" cmd
+
+copyLibharu :: PackageDescription -> LocalBuildInfo -> UserHooks -> CopyFlags -> IO ()
+copyLibharu desc lbi _ flags = do
+  let libPref = libdir . absoluteInstallDirs desc lbi . fromFlag . copyDest $ flags
+      v = fromFlag $ copyVerbosity flags
+  runInDir v "libharu"
+    [["cp", "src/libhpdfs.a", libPref]]
