@@ -3,6 +3,7 @@ version:             0.1.0.0
 license:             BSD3
 author:              uuhan
 category:            PDF
+build-tools:         c2hs
 custom-setup:
   dependencies:
     - base
@@ -12,6 +13,13 @@ extra-source-files:
   - README.md
 extra-libraries:
   - hpdfs
+
+include-dirs:
+  - libharu/include
+
+when:
+  - condition: os(darwin)
+    cc-options: -U__BLOCKS__ -D_Nonnull=
 
 dependencies:
   - base >= 4.7 && < 5
