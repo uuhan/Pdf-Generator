@@ -1,3 +1,4 @@
+{-# LANGUAGE DuplicateRecordFields #-}
 module Graphics.PDF.LibHaru.Types where
 
 import Foreign.Ptr
@@ -35,6 +36,49 @@ type STATUS   = {#type STATUS#}
 -- | charactor-code (16bit)
 type CID      = {#type CID#}
 type UNICODE  = {#type UNICODE#}
+
+data Position = Position
+              { x :: REAL
+              , y :: REAL
+              }
+
+data Rect = Rect
+          { left   :: REAL
+          , bottom :: REAL
+          , right  :: REAL
+          , top    :: REAL
+          }
+
+data Point3D = Point3D
+             { x :: REAL
+             , y :: REAL
+             , z :: REAL
+             }
+
+data Date = Date
+          { year        :: INT
+          , month       :: INT
+          , day         :: INT
+          , hour        :: INT
+          , minutes     :: INT
+          , seconds     :: INT
+          , ind         :: CChar
+          , off_hour    :: INT
+          , off_minutes :: INT
+          }
+
+data TextWidth = TextWidth
+               { numchars :: UINT
+               , numwords :: UINT
+               , width    :: UINT
+               , numspace :: UINT
+               }
+
+data DashMode = DashMode
+              { ptn     :: [UINT16]
+              , num_ptn :: UINT
+              , phase   :: UINT
+              }
 
 {#pointer Error_Handler as ErrorHandler newtype#}
 {#pointer Alloc_Func    as AllocFunc    newtype#}
