@@ -37,6 +37,10 @@ import Foreign.Marshal.Alloc
   } -> `Float'
 #}
 
+-- {# fun unsafe SetSize as ^
+--   { id `Page' } -> `Word64'
+-- #}
+
 {# fun unsafe CreateDestination as ^
   { id `Page' } -> `Destination' id
 #}
