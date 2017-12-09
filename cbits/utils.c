@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 #include "hpdf.h"
 
 void
@@ -32,4 +33,13 @@ draw_image(HPDF_Doc pdf, const char* filename, float x, float y,
     HPDF_Page_ShowTextNextLine (page, filename);
     HPDF_Page_ShowTextNextLine (page, text);
     HPDF_Page_EndText (page);
+}
+
+void
+error_handler  (HPDF_STATUS   error_no,
+                HPDF_STATUS   detail_no,
+                void         *user_data)
+{
+    printf ("ERROR: error_no=%04X, detail_no=%u\n", (HPDF_UINT)error_no,
+                (HPDF_UINT)detail_no);
 }
