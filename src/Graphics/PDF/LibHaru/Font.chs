@@ -6,8 +6,9 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
+{#import Graphics.PDF.LibHaru.Objects#}
 #include "hpdf_font.h"
 
 {#context prefix = "HPDF"#}
 
-type Font = {#type Font#}
+type Font = Dict
