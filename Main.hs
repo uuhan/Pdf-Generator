@@ -1,7 +1,8 @@
 module Main where
 
 import           Graphics.PDF.LibHaru
-import qualified Graphics.PDF.LibHaru.Page as Page
+import qualified Graphics.PDF.LibHaru.Page  as Page
+import           Graphics.PDF.LibHaru.Utils
 
 main :: IO ()
 main = do
@@ -12,6 +13,3 @@ main = do
     Page.setHeight page 200
     saveToFile doc "test.pdf"
     return ()
-
-foreign import ccall unsafe "utils.h &error_handler"
-  error_handler :: ErrorHandler

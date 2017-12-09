@@ -8,6 +8,7 @@ import Foreign.Marshal.Alloc
 
 import Data.Word (Word64)
 
+{#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Doc#}
 {#import Graphics.PDF.LibHaru.Font#}
 {#import Graphics.PDF.LibHaru.Objects#}
@@ -15,8 +16,6 @@ import Data.Word (Word64)
 #include "hpdf.h"
 
 {#context prefix = "HPDF"#}
-
-type ErrorHandler = {#type Error_Handler#}
 
 {# fun unsafe New as ^
   { id `ErrorHandler'

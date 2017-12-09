@@ -33,10 +33,12 @@ dependencies:
 library:
   source-dirs: src
   exposed-modules:
+    - Graphics.PDF.LibHaru.Types
     - Graphics.PDF.LibHaru.Objects
     - Graphics.PDF.LibHaru.Font
     - Graphics.PDF.LibHaru.Doc
     - Graphics.PDF.LibHaru.Page
+    - Graphics.PDF.LibHaru.Utils
     - Graphics.PDF.LibHaru
 
 executables:
