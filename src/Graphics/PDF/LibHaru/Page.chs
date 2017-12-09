@@ -75,11 +75,5 @@ import Foreign.Marshal.Alloc
 #}
 
 {# fun unsafe DrawImage as ^
-  { id `Page'
-  , id `Image'
-  , `Float'
-  , `Float'
-  , `Float'
-  , `Float'
-  } -> `Word64'
+  { id `Page' , id `Image' , `Float' , `Float' , `Float' , `Float' } -> `Word64'
 #}

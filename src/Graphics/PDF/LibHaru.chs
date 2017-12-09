@@ -39,11 +39,7 @@ import Data.Word (Word64, Word32)
 #}
 
 {# fun unsafe Destination_SetXYZ as ^
-  { id `Destination'
-  , `Float'
-  , `Float'
-  , `Float'
-  } ->  `Word64'
+  { id `Destination' , `Float' , `Float' , `Float' } ->  `Word64'
 #}
 
 {# fun unsafe SetOpenAction as ^
