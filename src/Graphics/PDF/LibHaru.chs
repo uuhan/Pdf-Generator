@@ -31,7 +31,7 @@ import Data.Word (Word64, Word32)
 #}
 
 {# fun unsafe GetFont as ^
-  { id `Doc' , `String' , alloca- `()' } -> `Font' id
+  { id `Doc' , `String' , `CString' } -> `Font' id
 #}
 
 {# fun unsafe SetCompressionMode as ^
