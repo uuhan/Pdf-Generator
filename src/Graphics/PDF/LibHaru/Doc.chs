@@ -10,4 +10,4 @@ import Foreign.Marshal.Alloc
 
 {#context prefix = "HPDF"#}
 
-type Doc = {#type Doc#}
+{#pointer Doc as Doc newtype#}

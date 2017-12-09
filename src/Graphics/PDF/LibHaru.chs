@@ -19,23 +19,23 @@ import Data.Word (Word64, Word32)
 {#context prefix = "HPDF"#}
 
 {# fun unsafe New as ^
-  { id `ErrorHandler' , alloca- `()' } -> `Doc' id
+  { `ErrorHandler' , alloca- `()' } -> `Doc'
 #}
 
 {# fun unsafe SaveToFile as ^
-  { id `Doc' , `String' } -> `Word64'
+  { `Doc' , `String' } -> `Word64'
 #}
 
 {# fun unsafe AddPage as ^
-  { id `Doc' } -> `Page' id
+  { `Doc' } -> `Page' id
 #}
 
 {# fun unsafe GetFont as ^
-  { id `Doc' , `String' , `CString' } -> `Font' id
+  { `Doc' , `String' , `CString' } -> `Font' id
 #}
 
 {# fun unsafe SetCompressionMode as ^
-  { id `Doc' , `Int' } -> `Word64'
+  { `Doc' , `Int' } -> `Word64'
 #}
 
 {# fun unsafe Destination_SetXYZ as ^
@@ -47,13 +47,13 @@ import Data.Word (Word64, Word32)
 #}
 
 {# fun unsafe SetOpenAction as ^
-  { id `Doc'
+  { `Doc'
   , id `Destination'
   } -> `Word64'
 #}
 
 {# fun unsafe LoadPngImageFromFile as ^
-  { id `Doc', `String' } -> `Image' id
+  { `Doc', `String' } -> `Image' id
 #}
 
 {# fun pure Image_GetHeight as ^
@@ -65,7 +65,7 @@ import Data.Word (Word64, Word32)
 #}
 
 {# fun unsafe Free as ^
-  { id `Doc' } -> `()'
+  { `Doc' } -> `()'
 #}
 
 -- | Utils

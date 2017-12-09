@@ -10,4 +10,6 @@ import Foreign.Marshal.Alloc
 
 {#context prefix = "HPDF"#}
 
-type ErrorHandler = {#type Error_Handler#}
+-- type ErrorHandler = {#type Error_Handler#}
+
+{#pointer Error_Handler as ErrorHandler newtype#}
