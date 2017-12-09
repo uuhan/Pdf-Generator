@@ -34,6 +34,7 @@ library:
   source-dirs: src
   exposed-modules:
     - Graphics.PDF.LibHaru.Types
+    - Graphics.PDF.LibHaru.Consts
     - Graphics.PDF.LibHaru.Objects
     - Graphics.PDF.LibHaru.Font
     - Graphics.PDF.LibHaru.Doc

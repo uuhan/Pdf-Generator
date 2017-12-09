@@ -11,3 +11,6 @@ import Foreign.Marshal.Alloc
 {#context prefix = "HPDF"#}
 
 type Page = {#type Page#}
+type Destination = {#type Destination#}
+type Image = {#type Image#}
+type Outline = {#type Outline#}

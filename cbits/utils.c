@@ -43,3 +43,35 @@ error_handler  (HPDF_STATUS   error_no,
     printf ("ERROR: error_no=%04X, detail_no=%u\n", (HPDF_UINT)error_no,
                 (HPDF_UINT)detail_no);
 }
+
+void
+show_description (HPDF_Page    page,
+                  float        x,
+                  float        y,
+                  const char  *text)
+{
+    char buf[255];
+
+    HPDF_Page_MoveTo (page, x, y - 10);
+    HPDF_Page_LineTo (page, x, y + 10);
+    HPDF_Page_MoveTo (page, x - 10, y);
+    HPDF_Page_LineTo (page, x + 10, y);
+    HPDF_Page_Stroke (page);
+
+    HPDF_Page_SetFontAndSize (page, HPDF_Page_GetCurrentFont (page), 8);
+    HPDF_Page_SetRGBFill (page, 0, 0, 0);
+
+    HPDF_Page_BeginText (page);
+
+    snprintf(buf, 255, "(x=%d,y=%d)", (int)x, (int)y);
+    HPDF_Page_MoveTextPos (page, x - HPDF_Page_TextWidth (page, buf) - 5,
+            y - 10);
+    HPDF_Page_ShowText (page, buf);
+    HPDF_Page_EndText (page);
+
+    HPDF_Page_BeginText (page);
+    HPDF_Page_MoveTextPos (page, x - 20, y - 25);
+    HPDF_Page_ShowText (page, text);
+    HPDF_Page_EndText (page);
+}
+
