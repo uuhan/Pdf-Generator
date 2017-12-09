@@ -25,8 +25,8 @@ main = do
     image1 <- loadPngImageFromFile pdf "pngsuite/basn3p02.png"
     setLineWidth page 0.5
 
-    let x = 100.0
-        y = realToFrac $ getHeight page - 150
+    let x  = 100.0
+        y  = realToFrac $ getHeight page - 150
         iw = realToFrac $ imageGetWidth image1
         ih = realToFrac $ imageGetHeight image1
 
