@@ -8,6 +8,7 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
+{#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
 {#import Graphics.PDF.LibHaru.Font#}
 
@@ -37,9 +38,9 @@ import Foreign.Marshal.Alloc
   } -> `Float'
 #}
 
--- {# fun unsafe SetSize as ^
---   { id `Page' } -> `Word64'
--- #}
+{# fun unsafe SetSize as ^
+  { id `Page', `PageSizes', `PageDirection' } -> `Word64'
+#}
 
 {# fun unsafe CreateDestination as ^
   { id `Page' } -> `Destination' id
@@ -47,6 +48,10 @@ import Foreign.Marshal.Alloc
 
 {# fun unsafe BeginText as ^
   { id `Page' } -> `Word64'
+#}
+
+{# fun unsafe TextWidth as ^
+  { id `Page', `String' } -> `Float'
 #}
 
 {# fun unsafe SetFontAndSize as ^
