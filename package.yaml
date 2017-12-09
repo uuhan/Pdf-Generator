@@ -43,14 +43,15 @@ library:
     - Graphics.PDF.LibHaru
 
 executables:
-  HsPDF:
-    source-dirs: .
+  HsPDF: &main
+    source-dirs:
+      - .
+      - demo
     main: Main.hs
+    ghc-options: -O2 -threaded
     dependencies:
       - HsPDF
 
   image_demo:
-    source-dirs: demo
+    <<: *main
     main: image_demo.hs
-    dependencies:
-      - HsPDF
