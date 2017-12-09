@@ -9,6 +9,7 @@ import Foreign.Marshal.Alloc
 import Data.Word (Word64)
 
 {#import Graphics.PDF.LibHaru.Doc#}
+{#import Graphics.PDF.LibHaru.Font#}
 {#import Graphics.PDF.LibHaru.Objects#}
 
 #include "hpdf.h"
@@ -31,4 +32,11 @@ type ErrorHandler = {#type Error_Handler#}
 
 {# fun unsafe AddPage as ^
   { id `Doc' } -> `Page' id
+#}
+
+{# fun unsafe GetFont as ^
+  { id `Doc'
+  , `String'
+  , alloca- `()'
+  } -> `Font' id
 #}
