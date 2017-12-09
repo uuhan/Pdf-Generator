@@ -43,7 +43,13 @@ library:
 
 executables:
   HsPDF:
-    source-dirs:      .
-    main:             Main.hs
+    source-dirs: .
+    main: Main.hs
+    dependencies:
+      - HsPDF
+
+  image_demo:
+    source-dirs: demo
+    main: image_demo.hs
     dependencies:
       - HsPDF
