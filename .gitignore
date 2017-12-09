@@ -2,3 +2,4 @@ HsPDF.cabal
 .stack-work
 data
 test.pdf
+*.pdf

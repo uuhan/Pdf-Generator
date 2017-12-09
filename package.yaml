@@ -55,3 +55,7 @@ executables:
   image_demo:
     <<: *main
     main: image_demo.hs
+
+  arc_demo:
+    <<: *main
+    main: arc_demo.hs
