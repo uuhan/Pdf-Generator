@@ -19,6 +19,10 @@ main = do
     moveTextPos page ((getWidth page - 20) / 2) ((getHeight page - 20) / 2)
     showText page text
     endText page
+
+    -- attach file
+    attachFile pdf "demo/attach.hs"
+
     saveToFile pdf "attach.pdf"
     free pdf
 

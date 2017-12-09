@@ -68,11 +68,11 @@ import Data.Word (Word64, Word32)
   { `Doc' } -> `()'
 #}
 
+{# fun unsafe AttachFile as ^
+  { `Doc', withCString* `FilePath' } -> `EmbeddedFile' id
+#}
+
 -- | Utils
 {# fun unsafe show_description as ^
-  { id `Page'
-  , `Float'
-  , `Float'
-  , `String'
-  } -> `()'
+  { id `Page' , `Float' , `Float' , `String' } -> `()'
 #}
