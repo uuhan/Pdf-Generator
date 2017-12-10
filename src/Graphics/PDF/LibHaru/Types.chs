@@ -82,6 +82,13 @@ data Date = Date
           , off_hour    :: INT
           , off_minutes :: INT
           }
+instance Storable Date where
+  alignment _ = {#alignof Rect#}
+  sizeOf _ = {#sizeof Rect#}
+  peek ptr = do
+    error "not implemented"
+  poke ptr Date{..} = do
+    error "not implemented"
 
 data TextWidth = TextWidth
                { numchars :: UINT
