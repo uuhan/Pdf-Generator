@@ -54,6 +54,7 @@ library:
     - Graphics.PDF.LibHaru.Annotation.LinkAnnot
     - Graphics.PDF.LibHaru.Annotation.TextAnnot
     - Graphics.PDF.LibHaru.Annotation.MarkupAnnot
+    - Graphics.PDF.LibHaru.Annotation.PopupAnnot
 
 executables:
   HsPDF: &main
