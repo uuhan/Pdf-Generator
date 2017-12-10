@@ -14,3 +14,10 @@ import Data.Word (Word64)
 #include "hpdf.h"
 
 {#context prefix = "HPDF_PopupAnnot"#}
+
+-- TODO: conflict with TextAnnot
+{# fun unsafe SetOpened as setPopupOpened
+  {
+    id `Annotation', `Bool'
+  } -> `Word64'
+#}
