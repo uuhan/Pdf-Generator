@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 module Graphics.PDF.LibHaru.Types where
 
@@ -48,6 +50,20 @@ data Rect = Rect
           , right  :: REAL
           , top    :: REAL
           }
+instance Storable Rect where
+  alignment _ = {#alignof Rect#}
+  sizeOf _ = {#sizeof Rect#}
+  peek ptr = do
+    left <- {#get Rect->left#} ptr
+    bottom <- {#get Rect->bottom#} ptr
+    right <- {#get Rect->right#} ptr
+    top <- {#get Rect->top#} ptr
+    return Rect{..}
+  poke ptr Rect{..} = do
+    {#set Rect->left#} ptr left
+    {#set Rect->bottom#} ptr bottom
+    {#set Rect->right#} ptr right
+    {#set Rect->top#} ptr top
 
 data Point3D = Point3D
              { x :: REAL
@@ -79,6 +95,45 @@ data DashMode = DashMode
               , num_ptn :: UINT
               , phase   :: UINT
               }
+
+data RGBColor = RGBColor
+              { r :: REAL
+              , g :: REAL
+              , b :: REAL
+              }
+instance Storable RGBColor where
+  alignment _ = {#alignof RGBColor#}
+  sizeOf _ = {#sizeof RGBColor#}
+  peek ptr = do
+    r <- {#get RGBColor->r#} ptr
+    g <- {#get RGBColor->g#} ptr
+    b <- {#get RGBColor->b#} ptr
+    return RGBColor{..}
+  poke ptr RGBColor{..} = do
+    {#set RGBColor->r#} ptr r
+    {#set RGBColor->g#} ptr g
+    {#set RGBColor->b#} ptr b
+
+data CMYKColor = CMYKColor
+              { c :: REAL
+              , m :: REAL
+              , y :: REAL
+              , k :: REAL
+              }
+instance Storable CMYKColor where
+  alignment _ = {#alignof CMYKColor#}
+  sizeOf _ = {#sizeof CMYKColor#}
+  peek ptr = do
+    c <- {#get CMYKColor->c#} ptr
+    m <- {#get CMYKColor->m#} ptr
+    y <- {#get CMYKColor->y#} ptr
+    k <- {#get CMYKColor->k#} ptr
+    return CMYKColor{..}
+  poke ptr CMYKColor{..} = do
+    {#set CMYKColor->c#} ptr c
+    {#set CMYKColor->m#} ptr m
+    {#set CMYKColor->y#} ptr y
+    {#set CMYKColor->k#} ptr k
 
 {#pointer Error_Handler as ErrorHandler newtype#}
 {#pointer Alloc_Func    as AllocFunc    newtype#}

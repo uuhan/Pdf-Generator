@@ -34,13 +34,24 @@ library:
   source-dirs: src
   exposed-modules:
     - Graphics.PDF.LibHaru.Types
+    - Graphics.PDF.LibHaru.Error
+    - Graphics.PDF.LibHaru.Encoder
     - Graphics.PDF.LibHaru.Consts
     - Graphics.PDF.LibHaru.Objects
     - Graphics.PDF.LibHaru.Font
+    - Graphics.PDF.LibHaru.FontDef
     - Graphics.PDF.LibHaru.Doc
+    - Graphics.PDF.LibHaru.Outline
+    - Graphics.PDF.LibHaru.Annotation
+    - Graphics.PDF.LibHaru.Destination
     - Graphics.PDF.LibHaru.Page
     - Graphics.PDF.LibHaru.Utils
     - Graphics.PDF.LibHaru
+  other-modules:
+    - Graphics.PDF.LibHaru.Internal
+    - Graphics.PDF.LibHaru.Annotation.Annot
+    - Graphics.PDF.LibHaru.Annotation.LinkAnnot
+    - Graphics.PDF.LibHaru.Annotation.TextAnnot
 
 executables:
   HsPDF: &main
@@ -64,3 +75,7 @@ executables:
   attach:
     <<: *main
     main: attach.hs
+
+  encoding_list:
+    <<: *main
+    main: encoding_list.hs

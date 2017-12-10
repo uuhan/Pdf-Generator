@@ -9,3 +9,7 @@ void error_handler(HPDF_STATUS error_no, HPDF_STATUS detail_no,
 void show_description(HPDF_Page page, float x, float y, const char* text);
 
 void print_grid(HPDF_Doc pdf, HPDF_Page page);
+
+void draw_graph(HPDF_Page page);
+
+void draw_fonts(HPDF_Page page);
