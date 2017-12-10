@@ -90,8 +90,8 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 
 {# fun unsafe HPDF_TextMarkupAnnot_SetQuadPoints as setQuadPoints
   {
-    id `Annotation',
-    withCast* `Point', withCast* `Point',
-    withCast* `Point', withCast* `Point'
+    id `Annotation'
+    , withCast* `Point', withCast* `Point'
+    , withCast* `Point', withCast* `Point'
   } -> `Word64'
 #}

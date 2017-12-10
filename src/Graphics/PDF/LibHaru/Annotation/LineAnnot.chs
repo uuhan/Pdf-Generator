@@ -15,3 +15,23 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 #include "hpdf.h"
 
 {#context prefix = "HPDF_LineAnnot"#}
+
+{# fun unsafe SetPosition as setLinePosition
+  {
+    id `Annotation'
+    , withCast* `Point', `LineAnnotEndingStyle'
+    , withCast* `Point', `LineAnnotEndingStyle'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetLeader as ^
+  {
+    id `Annotation', `Int', `Int', `Int'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetCaption as ^
+  {
+    id `Annotation', `Bool', `LineAnnotCapPosition', `Int', `Int'
+  } -> `Word64'
+#}
