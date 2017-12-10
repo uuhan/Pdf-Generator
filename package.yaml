@@ -37,6 +37,7 @@ library:
     - Graphics.PDF.LibHaru.Error
     - Graphics.PDF.LibHaru.Encoder
     - Graphics.PDF.LibHaru.Consts
+    - Graphics.PDF.LibHaru.MMgr
     - Graphics.PDF.LibHaru.Objects
     - Graphics.PDF.LibHaru.Font
     - Graphics.PDF.LibHaru.FontDef
