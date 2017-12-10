@@ -54,16 +54,31 @@ instance Storable Rect where
   alignment _ = {#alignof Rect#}
   sizeOf _ = {#sizeof Rect#}
   peek ptr = do
-    left <- {#get Rect->left#} ptr
-    bottom <- {#get Rect->bottom#} ptr
-    right <- {#get Rect->right#} ptr
-    top <- {#get Rect->top#} ptr
+    left   <- {#get Rect->left   #} ptr
+    bottom <- {#get Rect->bottom #} ptr
+    right  <- {#get Rect->right  #} ptr
+    top    <- {#get Rect->top    #} ptr
     return Rect{..}
   poke ptr Rect{..} = do
-    {#set Rect->left#} ptr left
-    {#set Rect->bottom#} ptr bottom
-    {#set Rect->right#} ptr right
-    {#set Rect->top#} ptr top
+    {#set Rect->left   #} ptr left
+    {#set Rect->bottom #} ptr bottom
+    {#set Rect->right  #} ptr right
+    {#set Rect->top    #} ptr top
+
+data Point = Point
+           { x :: REAL
+           , y :: REAL
+           }
+instance Storable Point where
+  alignment _ = {#alignof Point#}
+  sizeOf _ = {#sizeof Point#}
+  peek ptr = do
+    x <- {#get Point->x#} ptr
+    y <- {#get Point->y#} ptr
+    return Point{..}
+  poke ptr Point{..} = do
+    {#set Point->x#} ptr x
+    {#set Point->y#} ptr y
 
 data Point3D = Point3D
              { x :: REAL

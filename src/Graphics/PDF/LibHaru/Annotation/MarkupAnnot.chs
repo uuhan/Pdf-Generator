@@ -39,3 +39,59 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Annotation', `Float'
   } -> `Word64'
 #}
+
+{# fun unsafe SetIntent as ^
+  {
+    id `Annotation', `AnnotIntent'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetPopup as ^
+  {
+    id `Annotation', id `Annotation'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetRectDiff as ^
+  {
+    id `Annotation', withCast* `Rect'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetCloudEffect as ^
+  {
+    id `Annotation', `Int'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetInteriorRGBColor as ^
+  {
+    id `Annotation', withCast* `RGBColor'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetInteriorCMYKColor as ^
+  {
+    id `Annotation', withCast* `CMYKColor'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetInteriorGrayColor as ^
+  {
+    id `Annotation', `Float'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetInteriorTransparent as ^
+  {
+    id `Annotation'
+  } -> `Word64'
+#}
+
+{# fun unsafe HPDF_TextMarkupAnnot_SetQuadPoints as setQuadPoints
+  {
+    id `Annotation',
+    withCast* `Point', withCast* `Point',
+    withCast* `Point', withCast* `Point'
+  } -> `Word64'
+#}
