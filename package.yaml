@@ -53,6 +53,7 @@ library:
     - Graphics.PDF.LibHaru.Annotation.Annot
     - Graphics.PDF.LibHaru.Annotation.LinkAnnot
     - Graphics.PDF.LibHaru.Annotation.TextAnnot
+    - Graphics.PDF.LibHaru.Annotation.FreeTextAnnot
     - Graphics.PDF.LibHaru.Annotation.MarkupAnnot
     - Graphics.PDF.LibHaru.Annotation.PopupAnnot
 
