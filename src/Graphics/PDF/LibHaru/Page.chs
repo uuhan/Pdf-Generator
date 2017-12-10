@@ -190,3 +190,54 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Page', withCast* `Rect', `String', `Encoder'
   } -> `Annotation' id
 #}
+
+{# fun unsafe Circle as ^
+  {
+    id `Page'
+    , `Float', `Float' , `Float'
+  } -> `Word64'
+#}
+
+{# fun unsafe Ellipse as ^
+  {
+    id `Page'
+    , `Float', `Float'
+    , `Float', `Float'
+  } -> `Word64'
+#}
+
+{# fun unsafe Arc as ^
+  {
+    id `Page'
+    , `Float', `Float'
+    , `Float'
+    , `Float', `Float'
+  } -> `Word64'
+#}
+
+{# fun unsafe TextOut as ^
+  {
+    id `Page'
+    , `Float', `Float'
+    , `String'
+  } -> `Word64'
+#}
+
+{# fun unsafe TextRect as ^
+  {
+    id `Page'
+    , `Float', `Float'
+    , `Float', `Float'
+    , `String'
+    , `TextAlignment'
+    , `Word32'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetSlideShow as ^
+  {
+    id `Page'
+    , `TransitionStyle'
+    , `Float', `Float'
+  } -> `Word64'
+#}
