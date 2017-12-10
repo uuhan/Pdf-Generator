@@ -27,3 +27,15 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Annotation', withCast* `RGBColor'
   } -> `Word64'
 #}
+
+{# fun unsafe SetGrayColor as ^
+  {
+    id `Annotation', `Float'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetNoColor as ^
+  {
+    id `Annotation'
+  } -> `Word64'
+#}
