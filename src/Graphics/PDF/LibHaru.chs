@@ -104,7 +104,7 @@ import Data.Word (Word32, Word64)
   } -> `PageLayout' -- enum
 #}
 
-{# fun pure SetPageLayout as ^
+{# fun unsafe SetPageLayout as ^
   {
     `Doc', `PageLayout'
   } -> `()'
@@ -116,7 +116,7 @@ import Data.Word (Word32, Word64)
   } -> `PageMode'
 #}
 
-{# fun pure SetPageMode as ^
+{# fun unsafe SetPageMode as ^
   {
     `Doc', `PageMode'
   } -> `()'
@@ -128,7 +128,7 @@ import Data.Word (Word32, Word64)
   } -> `Word32'
 #}
 
-{# fun pure SetViewerPreference as ^
+{# fun unsafe SetViewerPreference as ^
   {
     `Doc', `Word32'
   } -> `()'
