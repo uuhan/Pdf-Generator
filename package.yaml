@@ -60,7 +60,7 @@ library:
     - Graphics.PDF.LibHaru.Annotation.PopupAnnot
 
 executables:
-  HsPDF: &main
+  demo: &main
     source-dirs:
       - .
       - demo
@@ -69,6 +69,8 @@ executables:
     dependencies:
       - HsPDF
       - parsec
+    other-modules:
+      - Utils
   image_demo:
     <<: *main
     main: image_demo.hs

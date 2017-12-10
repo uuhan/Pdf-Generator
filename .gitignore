@@ -1,5 +1,6 @@
 HsPDF.cabal
 .stack-work
+data
 !data/sample.png
 test.pdf
 *.pdf
