@@ -4,6 +4,7 @@ module Graphics.PDF.LibHaru.Annotation
 
 import           Graphics.PDF.LibHaru.Annotation.Annot         as Annot
 import           Graphics.PDF.LibHaru.Annotation.FreeTextAnnot as Annot
+import           Graphics.PDF.LibHaru.Annotation.LineAnnot     as Annot
 import           Graphics.PDF.LibHaru.Annotation.LinkAnnot     as Annot
 import           Graphics.PDF.LibHaru.Annotation.MarkupAnnot   as Annot
 import           Graphics.PDF.LibHaru.Annotation.PopupAnnot    as Annot
