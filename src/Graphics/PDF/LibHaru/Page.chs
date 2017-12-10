@@ -1,6 +1,6 @@
 module Graphics.PDF.LibHaru.Page where
 
-import Data.Word (Word64)
+import Data.Word (Word64, Word32, Word16)
 
 import Foreign.Ptr
 import Foreign.C.Types
@@ -40,6 +40,18 @@ import Foreign.Marshal.Alloc
 
 {# fun unsafe SetSize as ^
   { id `Page', `PageSizes', `PageDirection' } -> `Word64'
+#}
+
+{# fun unsafe SetRotate as ^
+  {
+    id `Page', `Word16'
+  } -> `Word64'
+#}
+
+{# fun unsafe SetZoom as ^
+  {
+    id `Page', `Float'
+  } -> `Word64'
 #}
 
 {# fun unsafe CreateDestination as ^
