@@ -341,3 +341,10 @@ import Data.Word (Word32, Word64)
 {# fun unsafe show_description as ^
   { id `Page' , `Float' , `Float' , `String' } -> `()'
 #}
+
+-- encryption
+{# fun unsafe SetPassword as ^
+  {
+    `Doc', `String', `String'
+  } -> `Word64'
+#}

@@ -69,19 +69,18 @@ executables:
     dependencies:
       - HsPDF
       - parsec
-
   image_demo:
     <<: *main
     main: image_demo.hs
-
   arc_demo:
     <<: *main
     main: arc_demo.hs
-
   attach:
     <<: *main
     main: attach.hs
-
   encoding_list:
     <<: *main
     main: encoding_list.hs
+  encryption:
+    <<: *main
+    main: encryption.hs
