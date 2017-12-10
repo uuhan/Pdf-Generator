@@ -23,7 +23,7 @@ main :: IO ()
 main = do
     args <- getArgs
     unless (length args /= 0) $ do
-      putStrLn "HsPDF <指令文件>"
+      putStrLn "./demo <指令文件>"
       exitFailure
     strings <- lines <$> (readFile $ args !! 0)
     let cmds = rights $ map (\s -> parse cmd "" s) strings
