@@ -6,11 +6,11 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
-import Data.Word (Word64)
 import Graphics.PDF.LibHaru.Internal (withCast)
 
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
+{#import Graphics.PDF.LibHaru.Error#}
 
 #include "hpdf.h"
 
@@ -21,17 +21,17 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Annotation'
     , withCast* `Point', `LineAnnotEndingStyle'
     , withCast* `Point', `LineAnnotEndingStyle'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetLeader as ^
   {
     id `Annotation', `Int', `Int', `Int'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetCaption as ^
   {
     id `Annotation', `Bool', `LineAnnotCapPosition', `Int', `Int'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}

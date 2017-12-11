@@ -6,10 +6,9 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
-import Data.Word (Word64)
-
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
+{#import Graphics.PDF.LibHaru.Error#}
 
 #include "hpdf.h"
 
@@ -19,5 +18,5 @@ import Data.Word (Word64)
 {# fun unsafe SetOpened as setPopupOpened
   {
     id `Annotation', `Bool'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
