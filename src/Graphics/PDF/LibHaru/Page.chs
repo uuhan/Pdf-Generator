@@ -1,7 +1,7 @@
 module Graphics.PDF.LibHaru.Page
   where
 
-import Data.Word (Word64, Word32, Word16)
+import Data.Word (Word32, Word16)
 
 import Foreign.Ptr
 import Foreign.C.Types
@@ -14,6 +14,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
+{#import Graphics.PDF.LibHaru.Error#}
 {#import Graphics.PDF.LibHaru.Encoder#}
 {#import Graphics.PDF.LibHaru.Font#}
 
@@ -24,13 +25,13 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 {# fun unsafe SetWidth as ^
   { id `Page'
   , `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetHeight as ^
   { id `Page'
   , `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun pure GetWidth as ^
@@ -44,19 +45,19 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 #}
 
 {# fun unsafe SetSize as ^
-  { id `Page', `PageSizes', `PageDirection' } -> `Word64'
+  { id `Page', `PageSizes', `PageDirection' } -> `ErrorCode'
 #}
 
 {# fun unsafe SetRotate as ^
   {
     id `Page', `Word16'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetZoom as ^
   {
     id `Page', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe CreateDestination as ^
@@ -64,7 +65,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 #}
 
 {# fun unsafe BeginText as ^
-  { id `Page' } -> `Word64'
+  { id `Page' } -> `ErrorCode'
 #}
 
 {# fun unsafe TextWidth as ^
@@ -72,27 +73,27 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 #}
 
 {# fun unsafe SetFontAndSize as ^
-  { id `Page', id `Font', `Float' } -> `Word64'
+  { id `Page', id `Font', `Float' } -> `ErrorCode'
 #}
 
 {# fun unsafe MoveTextPos as ^
-  { id `Page', `Float', `Float' } -> `Word64'
+  { id `Page', `Float', `Float' } -> `ErrorCode'
 #}
 
 {# fun unsafe ShowText as ^
-  { id `Page', `String' } -> `Word64'
+  { id `Page', `String' } -> `ErrorCode'
 #}
 
 {# fun unsafe EndText as ^
-  { id `Page' } -> `Word64'
+  { id `Page' } -> `ErrorCode'
 #}
 
 {# fun unsafe SetLineWidth as ^
-  { id `Page', `Float' } -> `Word64'
+  { id `Page', `Float' } -> `ErrorCode'
 #}
 
 {# fun unsafe DrawImage as ^
-  { id `Page' , id `Image' , `Float' , `Float' , `Float' , `Float' } -> `Word64'
+  { id `Page' , id `Image' , `Float' , `Float' , `Float' , `Float' } -> `ErrorCode'
 #}
 
 {# fun unsafe Create3DAnnot as ^
@@ -195,7 +196,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
   {
     id `Page'
     , `Float', `Float' , `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe Ellipse as ^
@@ -203,7 +204,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Page'
     , `Float', `Float'
     , `Float', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe Arc as ^
@@ -212,7 +213,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     , `Float', `Float'
     , `Float'
     , `Float', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe TextOut as ^
@@ -220,7 +221,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Page'
     , `Float', `Float'
     , `String'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe TextRect as ^
@@ -231,7 +232,7 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     , `String'
     , `TextAlignment'
     , `Word32'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetSlideShow as ^
@@ -239,5 +240,5 @@ import Graphics.PDF.LibHaru.Internal (withCast)
     id `Page'
     , `TransitionStyle'
     , `Float', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}

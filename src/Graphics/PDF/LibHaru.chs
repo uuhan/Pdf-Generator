@@ -7,7 +7,7 @@ import Foreign.Storable
 import Foreign.Marshal.Alloc
 import Foreign.Marshal.Utils
 
-import Data.Word (Word32, Word64)
+import Data.Word (Word32)
 
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Error#}
@@ -37,13 +37,13 @@ import Data.Word (Word32, Word64)
 {# fun unsafe SetErrorHandler as ^
   {
     `Doc', `ErrorHandler'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe NewDoc as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe FreeDoc as ^
@@ -59,19 +59,19 @@ import Data.Word (Word32, Word64)
 #}
 
 {# fun unsafe SaveToFile as ^
-  { `Doc' , `String' } -> `Word64'
+  { `Doc' , `String' } -> `ErrorCode'
 #}
 
 {# fun unsafe GetError as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe GetErrorDetail as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe ResetError as ^
@@ -83,13 +83,13 @@ import Data.Word (Word32, Word64)
 {# fun unsafe CheckError as ^
   {
     `Error'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetPagesConfiguration as ^
   {
     `Doc', `Word32'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe GetPageByIndex as ^
@@ -137,7 +137,7 @@ import Data.Word (Word32, Word64)
 {# fun unsafe SetOpenAction as ^
   {
     `Doc', id `Destination'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe FreeDocAll as ^
@@ -149,13 +149,13 @@ import Data.Word (Word32, Word64)
 {# fun unsafe SaveToStream as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 -- {# fun unsafe GetContents as ^
 --   {
 --     `Doc', `[Int]', `[Word32]'
---   } -> `Word64'
+--   } -> `ErrorCode'
 -- #}
 
 {# fun unsafe GetStreamSize as ^
@@ -167,13 +167,13 @@ import Data.Word (Word32, Word64)
 -- {# fun unsafe ReadFromStream as ^
 --   {
 --     `Doc', `[Int]', `[Word32]'
---   } -> `Word64'
+--   } -> `ErrorCode'
 -- #}
 
 {# fun unsafe ResetStream as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe GetCurrentPage as ^
@@ -189,61 +189,61 @@ import Data.Word (Word32, Word64)
 {# fun unsafe AddPageLabel as ^
   {
     `Doc', `Word32', `PageNumStyle', `Word32', `String'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseJPFonts as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseKRFonts as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseCNSFonts as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseCNTFonts as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseJPEncodings as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseKREncodings as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseCNSEncodings as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseCNTEncodings as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe UseUTFEncodings as ^
   {
     `Doc'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe InsertPage as ^
@@ -281,11 +281,11 @@ import Data.Word (Word32, Word64)
 #}
 
 {# fun unsafe SetCompressionMode as ^
-  { `Doc' , `Int' } -> `Word64'
+  { `Doc' , `Int' } -> `ErrorCode'
 #}
 
 {# fun unsafe Destination_SetXYZ as ^
-  { id `Destination' , `Float' , `Float' , `Float' } ->  `Word64'
+  { id `Destination' , `Float' , `Float' , `Float' } ->  `ErrorCode'
 #}
 
 {# fun unsafe LoadPngImageFromFile as ^
@@ -331,7 +331,7 @@ import Data.Word (Word32, Word64)
 {# fun unsafe SetCurrentEncoder as ^
   {
     `Doc', `String'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun pure GetVersion as ^
@@ -346,5 +346,5 @@ import Data.Word (Word32, Word64)
 {# fun unsafe SetPassword as ^
   {
     `Doc', `String', `String'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}

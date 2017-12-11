@@ -6,11 +6,11 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
-import Data.Word (Word64)
 import Graphics.PDF.LibHaru.Internal (withCast)
 
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
+{#import Graphics.PDF.LibHaru.Error#}
 {#import Graphics.PDF.LibHaru.MMgr#}
 
 #include "hpdf.h"
@@ -20,29 +20,29 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 {# fun unsafe SetRGBColor as ^
   {
     id `Annotation', withCast* `RGBColor'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetCMYKColor as ^
   {
     id `Annotation', withCast* `RGBColor'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetGrayColor as ^
   {
     id `Annotation', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetNoColor as ^
   {
     id `Annotation'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe Set3DView as ^
   {
     `MMgr', id `Annotation', id `Annotation', `Dict'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}

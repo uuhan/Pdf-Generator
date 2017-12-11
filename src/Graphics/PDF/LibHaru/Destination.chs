@@ -6,10 +6,9 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
-import Data.Word (Word64)
-
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
+{#import Graphics.PDF.LibHaru.Error#}
 
 #include "hpdf.h"
 {#context prefix = "HPDF_Destination"#}
@@ -17,47 +16,47 @@ import Data.Word (Word64)
 {# fun unsafe SetXYZ as ^
   {
     id `Destination', `Float', `Float', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFit as ^
   {
     id `Destination'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFitH as ^
   {
     id `Destination', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFitV as ^
   {
     id `Destination', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFitR as ^
   {
     id `Destination', `Float', `Float', `Float', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFitB as ^
   {
     id `Destination'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFitBH as ^
   {
     id `Destination', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
 
 {# fun unsafe SetFitBV as ^
   {
     id `Destination', `Float'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}

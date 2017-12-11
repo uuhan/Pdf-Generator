@@ -6,11 +6,11 @@ import Foreign.C.String
 import Foreign.Storable
 import Foreign.Marshal.Alloc
 
-import Data.Word (Word64)
 import Graphics.PDF.LibHaru.Internal (withCast)
 
 {#import Graphics.PDF.LibHaru.Types#}
 {#import Graphics.PDF.LibHaru.Objects#}
+{#import Graphics.PDF.LibHaru.Error#}
 
 #include "hpdf.h"
 
@@ -19,5 +19,5 @@ import Graphics.PDF.LibHaru.Internal (withCast)
 {# fun unsafe SetExData as ^
   {
     id `Annotation', id `ExData'
-  } -> `Word64'
+  } -> `ErrorCode'
 #}
