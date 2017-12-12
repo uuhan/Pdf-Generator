@@ -14,25 +14,36 @@ data Write = WriteT Pos String
            | WriteP Pos FilePath
            | FontChosen Pos String
 
+float :: Parser Float
+float = do
+    x <- digit
+    xs <- many $ (digit <|> char '.')
+    pure $ read (x:xs)
+
+pos :: Parser Pos
+pos = do
+  char '('
+  x <- skipSpace float
+  skipSpace $ char ','
+  y <- skipSpace float
+  skipSpace $ char ')'
+  return $ Pos{..}
+
+skipSpace :: Parser a -> Parser a
+skipSpace p = do
+    x <- p
+    many space
+    pure x
+
 -- (f,f), [T|P]:xxx
 cmd :: Parser Write
 cmd = do
-    char '('
-    many space
-    x <- read <$> many (digit <|> char '.')
-    many space
-    char ','
-    many space
-    y <- read <$> many (digit <|> char '.')
-    many space
-    char ')'
-    many space
-    char ','
-    many space
-    t <- anyChar
+    position <- skipSpace pos
+    skipSpace $ char ','
+    t <- skipSpace $ anyChar
     char ':'
     s <- many1 anyChar
     case t of
-      'T' -> pure $ WriteT Pos{..} s
-      'P' -> pure $ WriteP Pos{..} s
-      'F' -> pure $ FontChosen Pos{..} s
+      'T' -> pure $ WriteT position s
+      'P' -> pure $ WriteP position s
+      'F' -> pure $ FontChosen position s
