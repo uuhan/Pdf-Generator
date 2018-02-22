@@ -1,6 +1,6 @@
 # HsPDF
 
-[demo](http://code.smartstudy.com/uuhan/HsPDF/uploads/23b1865f40971548e4d81512661b148e/demo)
+[demo](#)
 
 **demo demo.conf**, 输出文稿: demo.pdf
 
